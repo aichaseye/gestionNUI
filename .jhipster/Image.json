@@ -1,0 +1,28 @@
+{
+  "applications": ["db_gestion_Matricule4"],
+  "changelogDate": "20220629105436",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "image",
+  "fields": [
+    {
+      "fieldName": "url",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Image",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nomMatiere",
+      "otherEntityName": "matiere",
+      "otherEntityRelationshipName": "image",
+      "relationshipName": "matiere",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

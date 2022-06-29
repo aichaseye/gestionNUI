@@ -1,0 +1,45 @@
+{
+  "applications": ["db_gestion_Matricule4"],
+  "changelogDate": "20220629104536",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "diplome",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "NomDiplome",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "CAP,BTS,BT,CPS,BEP,CQP,TS,METP,BTI,TitreProfessionnel,CAEP"
+    },
+    {
+      "fieldName": "matriculeDiplome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "anneeObtention",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Diplome",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nomEtab",
+      "otherEntityName": "etablissement",
+      "otherEntityRelationshipName": "diplome",
+      "relationshipName": "etablissement",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nomCompletApp",
+      "otherEntityName": "apprenant",
+      "otherEntityRelationshipName": "diplome",
+      "relationshipName": "apprenant",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

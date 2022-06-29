@@ -1,0 +1,9 @@
+{
+  "dbGestionMatricule4App": {
+    "Etat": {
+      "null": "",
+      "TRANSFERT": "TRANSFERT",
+      "DESISTEMENT": "DESISTEMENT"
+    }
+  }
+}

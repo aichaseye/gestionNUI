@@ -1,0 +1,126 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-diplome-heading"
+        data-cy="DiplomeCreateUpdateHeading"
+        jhiTranslate="dbGestionMatricule4App.diplome.home.createOrEditLabel"
+      >
+        Create or edit a Diplome
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="dbGestionMatricule4App.diplome.nom" for="field_nom">Nom</label>
+          <select class="form-control" name="nom" formControlName="nom" id="field_nom" data-cy="nom">
+            <option [ngValue]="null">{{ 'dbGestionMatricule4App.NomDiplome.null' | translate }}</option>
+            <option *ngFor="let nomDiplome of nomDiplomeValues" [value]="nomDiplome">
+              {{ 'dbGestionMatricule4App.NomDiplome.' + nomDiplome | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('nom')!.invalid && (editForm.get('nom')!.dirty || editForm.get('nom')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('nom')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="dbGestionMatricule4App.diplome.matriculeDiplome" for="field_matriculeDiplome"
+            >Matricule Diplome</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="matriculeDiplome"
+            id="field_matriculeDiplome"
+            data-cy="matriculeDiplome"
+            formControlName="matriculeDiplome"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="dbGestionMatricule4App.diplome.anneeObtention" for="field_anneeObtention"
+            >Annee Obtention</label
+          >
+          <div class="input-group">
+            <input
+              id="field_anneeObtention"
+              data-cy="anneeObtention"
+              type="text"
+              class="form-control"
+              name="anneeObtention"
+              ngbDatepicker
+              #anneeObtentionDp="ngbDatepicker"
+              formControlName="anneeObtention"
+            />
+            <button type="button" class="btn btn-secondary" (click)="anneeObtentionDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="dbGestionMatricule4App.diplome.etablissement" for="field_etablissement"
+            >Etablissement</label
+          >
+          <select
+            class="form-control"
+            id="field_etablissement"
+            data-cy="etablissement"
+            name="etablissement"
+            formControlName="etablissement"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                etablissementOption.id === editForm.get('etablissement')!.value?.id
+                  ? editForm.get('etablissement')!.value
+                  : etablissementOption
+              "
+              *ngFor="let etablissementOption of etablissementsSharedCollection; trackBy: trackEtablissementById"
+            >
+              {{ etablissementOption.nomEtab }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="dbGestionMatricule4App.diplome.apprenant" for="field_apprenant">Apprenant</label>
+          <select class="form-control" id="field_apprenant" data-cy="apprenant" name="apprenant" formControlName="apprenant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="apprenantOption.id === editForm.get('apprenant')!.value?.id ? editForm.get('apprenant')!.value : apprenantOption"
+              *ngFor="let apprenantOption of apprenantsSharedCollection; trackBy: trackApprenantById"
+            >
+              {{ apprenantOption.nomCompletApp }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

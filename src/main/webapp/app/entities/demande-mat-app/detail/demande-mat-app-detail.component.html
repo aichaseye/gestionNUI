@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="demandeMatApp">
+      <h2 data-cy="demandeMatAppDetailsHeading">
+        <span jhiTranslate="dbGestionMatricule4App.demandeMatApp.detail.title">Demande Mat App</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ demandeMatApp.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="dbGestionMatricule4App.demandeMatApp.nomCompletApp">Nom Complet App</span></dt>
+        <dd>
+          <span>{{ demandeMatApp.nomCompletApp }}</span>
+        </dd>
+        <dt><span jhiTranslate="dbGestionMatricule4App.demandeMatApp.email">Email</span></dt>
+        <dd>
+          <span>{{ demandeMatApp.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="dbGestionMatricule4App.demandeMatApp.telephone">Telephone</span></dt>
+        <dd>
+          <span>{{ demandeMatApp.telephone }}</span>
+        </dd>
+        <dt><span jhiTranslate="dbGestionMatricule4App.demandeMatApp.dateNaissance">Date Naissance</span></dt>
+        <dd>
+          <span>{{ demandeMatApp.dateNaissance | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="dbGestionMatricule4App.demandeMatApp.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ demandeMatApp.adresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="dbGestionMatricule4App.demandeMatApp.etatDemande">Etat Demande</span></dt>
+        <dd>
+          <span>{{ demandeMatApp.etatDemande }}</span>
+        </dd>
+        <dt><span jhiTranslate="dbGestionMatricule4App.demandeMatApp.sexe">Sexe</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'dbGestionMatricule4App.Sexe.' + demandeMatApp.sexe }}">{{ demandeMatApp.sexe }}</span>
+        </dd>
+        <dt><span jhiTranslate="dbGestionMatricule4App.demandeMatApp.nationalite">Nationalite</span></dt>
+        <dd>
+          <span>{{ demandeMatApp.nationalite }}</span>
+        </dd>
+        <dt><span jhiTranslate="dbGestionMatricule4App.demandeMatApp.numeroInscription">Numero Inscription</span></dt>
+        <dd>
+          <span>{{ demandeMatApp.numeroInscription }}</span>
+        </dd>
+        <dt><span jhiTranslate="dbGestionMatricule4App.demandeMatApp.objet">Objet</span></dt>
+        <dd>
+          <span>{{ demandeMatApp.objet }}</span>
+        </dd>
+        <dt><span jhiTranslate="dbGestionMatricule4App.demandeMatApp.matriculeApp">Matricule App</span></dt>
+        <dd>
+          <span>{{ demandeMatApp.matriculeApp }}</span>
+        </dd>
+        <dt><span jhiTranslate="dbGestionMatricule4App.demandeMatApp.anneeDemande">Annee Demande</span></dt>
+        <dd>
+          <span>{{ demandeMatApp.anneeDemande | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="dbGestionMatricule4App.demandeMatApp.apprenant">Apprenant</span></dt>
+        <dd>
+          <div *ngIf="demandeMatApp.apprenant">
+            <a [routerLink]="['/apprenant', demandeMatApp.apprenant?.id, 'view']">{{ demandeMatApp.apprenant?.nomCompletApp }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/demande-mat-app', demandeMatApp.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

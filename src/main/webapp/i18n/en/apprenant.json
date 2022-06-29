@@ -1,0 +1,40 @@
+{
+  "dbGestionMatricule4App": {
+    "apprenant": {
+      "home": {
+        "title": "Apprenants",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Apprenant",
+        "createOrEditLabel": "Create or edit a Apprenant",
+        "notFound": "No Apprenants found"
+      },
+      "created": "A new Apprenant is created with identifier {{ param }}",
+      "updated": "A Apprenant is updated with identifier {{ param }}",
+      "deleted": "A Apprenant is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Apprenant {{ id }}?"
+      },
+      "detail": {
+        "title": "Apprenant"
+      },
+      "id": "ID",
+      "nomCompletApp": "Nom Complet App",
+      "email": "Email",
+      "telephone": "Telephone",
+      "dateNaissance": "Date Naissance",
+      "photo": "Photo",
+      "adresse": "Adresse",
+      "matriculeApp": "Matricule App",
+      "sexe": "Sexe",
+      "etat": "Etat",
+      "nationalite": "Nationalite",
+      "inscription": "Inscription",
+      "releveNote": "Releve Note",
+      "diplome": "Diplome",
+      "niveauEtude": "Niveau Etude",
+      "help": {
+        "nomCompletApp": "The firstname attribute."
+      }
+    }
+  }
+}
