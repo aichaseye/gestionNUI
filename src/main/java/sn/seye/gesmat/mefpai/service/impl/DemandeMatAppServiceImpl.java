@@ -1,5 +1,6 @@
 package sn.seye.gesmat.mefpai.service.impl;
 
+import java.util.Calendar;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sn.seye.gesmat.mefpai.domain.DemandeMatApp;
+import sn.seye.gesmat.mefpai.domain.enumeration.Sexe;
 import sn.seye.gesmat.mefpai.repository.DemandeMatAppRepository;
 import sn.seye.gesmat.mefpai.service.DemandeMatAppService;
 
@@ -29,6 +31,18 @@ public class DemandeMatAppServiceImpl implements DemandeMatAppService {
     @Override
     public DemandeMatApp save(DemandeMatApp demandeMatApp) {
         log.debug("Request to save DemandeMatApp : {}", demandeMatApp);
+
+        String year = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
+        String date = String.valueOf(System.currentTimeMillis());
+        String initiales = demandeMatApp.getNomCompletApp().substring(date.length() - 2).toUpperCase();
+        String sexe = "M";
+        if (demandeMatApp.getSexe().equals(Sexe.Feminin)) {
+            sexe = "F";
+        }
+        String matricule = year.substring(year.length() - 2).concat(sexe).concat(date.substring(date.length() - 4)).concat(initiales);
+
+        demandeMatApp.setMatriculeApp(matricule);
+
         return demandeMatAppRepository.save(demandeMatApp);
     }
 
