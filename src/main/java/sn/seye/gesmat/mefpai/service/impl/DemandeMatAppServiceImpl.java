@@ -2,6 +2,7 @@ package sn.seye.gesmat.mefpai.service.impl;
 
 import java.util.Calendar;
 import java.util.Optional;
+import java.util.Random;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -34,12 +35,20 @@ public class DemandeMatAppServiceImpl implements DemandeMatAppService {
 
         String year = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
         String date = String.valueOf(System.currentTimeMillis());
-        String initiales = demandeMatApp.getNomCompletApp().substring(date.length() - 2).toUpperCase();
+
+        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        Random rnd = new Random();
+        char letter = alphabet.charAt(rnd.nextInt(alphabet.length()));
+
         String sexe = "M";
         if (demandeMatApp.getSexe().equals(Sexe.Feminin)) {
             sexe = "F";
         }
-        String matricule = year.substring(year.length() - 2).concat(sexe).concat(date.substring(date.length() - 4)).concat(initiales);
+        String matricule = year
+            .substring(year.length() - 2)
+            .concat(sexe)
+            .concat(date.substring(date.length() - 4))
+            .concat(String.valueOf(letter));
 
         demandeMatApp.setMatriculeApp(matricule);
 
