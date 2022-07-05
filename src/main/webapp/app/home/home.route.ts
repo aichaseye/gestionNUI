@@ -1,10 +1,11 @@
 import { Route } from '@angular/router';
 
-import { HomeComponent } from './home.component';
+// import { HomeComponent } from './home.component';
+import { LoginComponent } from '../login/login.component';
 
 export const HOME_ROUTE: Route = {
   path: '',
-  component: HomeComponent,
+  component: LoginComponent,
   data: {
     pageTitle: 'home.title',
   },
