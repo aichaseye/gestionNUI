@@ -39,8 +39,11 @@ public class DemandeMatEtabServiceImpl implements DemandeMatEtabService {
             .concat(demandeMatEtab.getNomEtab().substring(demandeMatEtab.getNomEtab().length() - 2))
             .concat(date.substring(date.length() - 4));
         Etablissement et = demandeMatEtab.getEtablissement();
-        et.setMatriculeEtab(matricule);
-        demandeMatEtab.setEtablissement(et);
+        if (et.getMatriculeEtab() == null || et.getMatriculeEtab().equals("")) {
+            et.setMatriculeEtab(matricule);
+            demandeMatEtab.setEtablissement(et);
+        }
+
         return demandeMatEtabRepository.save(demandeMatEtab);
     }
 
