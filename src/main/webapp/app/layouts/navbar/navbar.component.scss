@@ -16,8 +16,9 @@ Navbar
 // }
 
 .navbar {
-  padding: 1rem 1rem;
+  padding: 0.1rem 0.1rem;
   background-color: rgb(0, 102, 255);
+  height: 80px;
 }
 
 a.nav-link {
@@ -36,8 +37,8 @@ a.nav-link {
 Logo styles
 ========================================================================== */
 .mylogo {
-  height: 95px;
-  width: 95px;
+  height: 70px;
+  width: 70px;
   display: inline-block;
   vertical-align: middle;
   background: url('../../../content/images/mylogo.png') no-repeat center center;
